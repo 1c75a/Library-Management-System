@@ -1,1 +1,1 @@
-# Library-Management-System (CRUD Application 6)
+# Case Study (CRUD Application 6)
