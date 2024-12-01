@@ -28,10 +28,10 @@ struct Book
     {
         return id > other.id;
     }
-        bool operator==(const Book& other) const
-        {
-            return id == other.id && title == other.title && author == other.author;
-        }
+    bool operator==(const Book& other) const
+    {
+        return id == other.id && title == other.title && author == other.author;
+    }
 };
 
 class Library
@@ -66,7 +66,6 @@ public:
 
     void reindexBooks(vector<Book>& bookList)
     {
-
         bubbleSort(bookList);
 
         for (size_t i = 0; i < bookList.size(); ++i)
@@ -113,7 +112,7 @@ public:
     class BookOperationStack
     {
     private:
-        stack<pair<string, Book>>operationStack;
+        stack<pair<string, Book>> operationStack;
 
     public:
         void pushOperation(const string& operation, const Book& book)
@@ -129,8 +128,7 @@ public:
                 operationStack.pop();
                 return top;
             }
-            return {"", Book()
-            };
+            return {"", Book()};
         }
 
         bool isEmpty()
@@ -148,7 +146,7 @@ public:
         void enqueueReservation(const Book& book)
         {
             reservationQueue.push(book);
-            cout<<"Book '"<<book.title<<"' added to reservation queue.\n";
+            cout << "Book '" << book.title << "' added to reservation queue.\n";
         }
 
         Book dequeueReservation()
@@ -184,12 +182,12 @@ public:
         int choice;
 
         do {
-            cout<<ANSI_CYAN<<"Library Management System"<<ANSI_RESET<<"\n";
-            cout<<ANSI_YELLOW<<"1. User\n";
-            cout<<"2. Admin\n";
-            cout<<"3. Exit\n"<<ANSI_RESET;
-            cout<<"Enter your choice: ";
-            cin>>choice;
+            cout << ANSI_CYAN << "Library Management System" << ANSI_RESET << "\n";
+            cout << ANSI_YELLOW << "1. User\n";
+            cout << "2. Admin\n";
+            cout << "3. Exit\n" << ANSI_RESET;
+            cout << "Enter your choice: ";
+            cin >> choice;
 
             switch (choice)
             {
@@ -202,10 +200,10 @@ public:
                 case 3:
                     saveBooks();
                     saveIssuedBooks();
-                    cout<<ANSI_GREEN<<"Goodbye!"<<ANSI_RESET<<"\n";
+                    cout << ANSI_GREEN << "Goodbye!" << ANSI_RESET << "\n";
                     break;
                 default:
-                    cout<<ANSI_RED<<"Invalid choice. Try again."<<ANSI_RESET<<"\n";
+                    cout << ANSI_RED << "Invalid choice. Try again." << ANSI_RESET << "\n";
                     break;
             }
         } while (choice != 3);
@@ -216,14 +214,14 @@ public:
         int choice;
 
         do {
-            cout<<"\nUser Menu\n";
-            cout<<ANSI_YELLOW<<"1. View available books\n";
-            cout<<"2. Issue a book\n";
-            cout<<"3. Return a book\n";
-            cout<<"4. View issued books\n";
-            cout<<"5. Return to the main menu\n" << ANSI_RESET;
-            cout<<"Enter your choice: ";
-            cin>>choice;
+            cout << "\nUser Menu\n";
+            cout << ANSI_YELLOW << "1. View available books\n";
+            cout << "2. Issue a book\n";
+            cout << "3. Return a book\n";
+            cout << "4. View issued books\n";
+            cout << "5. Return to the main menu\n" << ANSI_RESET;
+            cout << "Enter your choice: ";
+            cin >> choice;
 
             switch (choice)
             {
@@ -242,7 +240,7 @@ public:
                 case 5:
                     return;
                 default:
-                    cout<< ANSI_RED << "Invalid choice. Try again." << ANSI_RESET << "\n";
+                    cout << ANSI_RED << "Invalid choice. Try again." << ANSI_RESET << "\n";
                     break;
             }
         } while (choice != 5);
@@ -254,16 +252,16 @@ public:
         {
             cout << "You haven't issued any books.\n";
         }
-            else
-            {
-                reindexIssuedBooks();
-                cout << "\nIssued Books:\n";
+        else
+        {
+            reindexIssuedBooks();
+            cout << "\nIssued Books:\n";
 
-                for (const Book& book : issuedBooks)
-                {
-                    displayBook(book);
-                }
+            for (const Book& book : issuedBooks)
+            {
+                displayBook(book);
             }
+        }
     }
 
     void adminMenu()
@@ -271,14 +269,14 @@ public:
         int choice;
 
         do {
-            cout<<"\nAdmin Menu\n";
-            cout<<ANSI_YELLOW<<"1. View all books\n";
-            cout<<"2. Add a book\n";
-            cout<<"3. Update a book\n";
-            cout<<"4. Delete a book\n";
-            cout<<"5. Return to the main menu\n"<<ANSI_RESET;
-            cout<<"Enter your choice: ";
-            cin>>choice;
+            cout << "\nAdmin Menu\n";
+            cout << ANSI_YELLOW << "1. View all books\n";
+            cout << "2. Add a book\n";
+            cout << "3. Update a book\n";
+            cout << "4. Delete a book\n";
+            cout << "5. Return to the main menu\n" << ANSI_RESET;
+            cout << "Enter your choice: ";
+            cin >> choice;
 
             switch (choice)
             {
@@ -297,7 +295,7 @@ public:
                 case 5:
                     return;
                 default:
-                    cout<<ANSI_RED<<"Invalid choice. Try again."<<ANSI_RESET<<"\n";
+                    cout << ANSI_RED << "Invalid choice. Try again." << ANSI_RESET << "\n";
                     break;
             }
         } while (choice != 5);
@@ -305,7 +303,7 @@ public:
 
     void viewAvailableBooks()
     {
-        cout<<"\nAvailable Books:\n";
+        cout << "\nAvailable Books:\n";
 
         for (const Book& book : books)
         {
@@ -318,7 +316,7 @@ public:
 
     void viewAllBooks()
     {
-        cout<<"\nAll Books:\n";
+        cout << "\nAll Books:\n";
 
         for (const Book& book : books)
         {
@@ -329,8 +327,8 @@ public:
     void issueBook()
     {
         int id;
-        cout<<"Enter the book ID to issue: ";
-        cin>>id;
+        cout << "Enter the book ID to issue: ";
+        cin >> id;
 
         for (Book& book : books)
         {
@@ -345,20 +343,20 @@ public:
                 books.erase(remove(books.begin(), books.end(), book), books.end());
                 reindexMainBooks();
 
-                cout<<ANSI_GREEN<<"Book issued successfully."<<ANSI_RESET<<"\n";
+                cout << ANSI_GREEN << "Book issued successfully." << ANSI_RESET << "\n";
                 return;
             }
         }
 
-        cout<<ANSI_RED<<"Book not found or already issued."<<ANSI_RESET<<"\n";
+        cout << ANSI_RED << "Book not found or already issued." << ANSI_RESET << "\n";
     }
 
     void returnBook()
     {
         int id;
 
-        cout<<"Enter the book ID to return: ";
-        cin>>id;
+        cout << "Enter the book ID to return: ";
+        cin >> id;
 
         auto it = find_if(issuedBooks.begin(), issuedBooks.end(), [&id](const Book& book) { return book.id == id; });
 
@@ -372,35 +370,68 @@ public:
             reindexMainBooks();
             reindexIssuedBooks();
 
-            cout<<ANSI_GREEN<<"Book returned successfully."<<ANSI_RESET<<"\n";
+            cout << ANSI_GREEN << "Book returned successfully." << ANSI_RESET << "\n";
         }
-            else
+        else
+        {
+            cout << ANSI_RED << "Book not found in issued books." << ANSI_RESET << "\n";
+        }
+    }
+
+    // New method to check for duplicate books
+    bool isDuplicateBook(const string& title, const string& author)
+    {
+        for (const Book& book : books)
+        {
+            if (book.title == title && book.author == author)
             {
-                cout<<ANSI_RED<<"Book not found in issued books."<<ANSI_RESET<<"\n";
+                return true;
             }
+        }
+        return false;
     }
 
     void addBook()
     {
         Book newBook;
         newBook.id = getNextBookID();
-        cout<<"Enter the book title: ";
-        cin.ignore();
-        getline(cin, newBook.title);
-        cout<<"Enter the book author: ";
-        getline(cin, newBook.author);
+
+        // Input validation for title
+        while (true) {
+            cout << "Enter the book title: ";
+            cin.ignore();
+            getline(cin, newBook.title);
+            if (!newBook.title.empty()) break;
+            cout << ANSI_RED << "Title cannot be empty. Please try again." << ANSI_RESET << endl;
+        }
+
+        // Input validation for author
+        while (true) {
+            cout << "Enter the book author: ";
+            getline(cin, newBook.author);
+            if (!newBook.author.empty()) break;
+            cout << ANSI_RED << "Author cannot be empty. Please try again." << ANSI_RESET << endl;
+        }
+
+        // Check for duplicate book
+        if (isDuplicateBook(newBook.title, newBook.author))
+        {
+            cout << ANSI_RED << "A book with the same title and author already exists." << ANSI_RESET << endl;
+            return;
+        }
+
         newBook.available = true;
         books.push_back(newBook);
         rebuildBookIndex();
-        cout<<ANSI_GREEN<<"Book added successfully."<<ANSI_RESET<<"\n";
+        cout << ANSI_GREEN << "Book added successfully." << ANSI_RESET << endl;
     }
 
     void updateBook()
     {
         int id;
 
-        cout<<"Enter the book ID to update: ";
-        cin>>id;
+        cout << "Enter the book ID to update: ";
+        cin >> id;
 
         auto it = bookIndex.find(id);
 
@@ -408,29 +439,29 @@ public:
         {
             Book* book = it->second;
 
-            cout<<"Enter the new title of the book: ";
+            cout << "Enter the new title of the book: ";
             cin.ignore();
             getline(cin, book->title);
 
-            cout<<"Enter the new author of the book: ";
+            cout << "Enter the new author of the book: ";
             getline(cin, book->author);
 
             bookOperationStack.pushOperation("Update", *book);
 
-            cout<<ANSI_GREEN<<"Book updated successfully."<<ANSI_RESET<<"\n";
+            cout << ANSI_GREEN << "Book updated successfully." << ANSI_RESET << "\n";
         }
-            else
-            {
-                cout<<ANSI_RED<<"Book not found."<<ANSI_RESET<<"\n";
-            }
+        else
+        {
+            cout << ANSI_RED << "Book not found." << ANSI_RESET << "\n";
+        }
     }
 
     void deleteBook()
     {
         int id;
 
-        cout<<"Enter the book ID to delete: ";
-        cin>>id;
+        cout << "Enter the book ID to delete: ";
+        cin >> id;
 
         auto it = bookIndex.find(id);
 
@@ -439,17 +470,17 @@ public:
             Book* book = it->second;
             books.erase(remove(books.begin(), books.end(), *book), books.end());
             reindexMainBooks();
-            cout<<ANSI_GREEN<<"Book deleted successfully."<<ANSI_RESET<<"\n";
+            cout << ANSI_GREEN << "Book deleted successfully." << ANSI_RESET << "\n";
         }
-            else
-            {
-                cout<<ANSI_RED<<"Book not found."<<ANSI_RESET<<"\n";
-            }
+        else
+        {
+            cout << ANSI_RED << "Book not found." << ANSI_RESET << "\n";
+        }
     }
 
     void displayBook(const Book& book)
     {
-        cout<<"ID: "<<book.id<<", Title: "<<book.title<<", Author: "<< book.author<<", Available: "<<(book.available ? "Yes" : "No")<<"\n";
+        cout << "ID: " << book.id << ", Title: " << book.title << ", Author: " << book.author << ", Available: " << (book.available ? "Yes" : "No") << "\n";
     }
 
     int getNextBookID()
@@ -471,12 +502,34 @@ public:
 
     void saveBooks()
     {
-
+        ofstream outputFile("books.txt");
+        if (outputFile.is_open())
+        {
+            for (const Book& book : books)
+            {
+                outputFile << book.id << "\n";
+                outputFile << book.title << "\n";
+                outputFile << book.author << "\n";
+                outputFile << book.available << "\n";
+            }
+            outputFile.close();
+        }
     }
 
     void saveIssuedBooks()
     {
-
+        ofstream outputFile("issued_books.txt");
+        if (outputFile.is_open())
+        {
+            for (const Book& book : issuedBooks)
+            {
+                outputFile << book.id << "\n";
+                outputFile << book.title << "\n";
+                outputFile << book.author << "\n";
+                outputFile << book.available << "\n";
+            }
+            outputFile.close();
+        }
     }
 
 private:
